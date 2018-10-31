@@ -95,7 +95,6 @@
 		08983DB0218998AC00C1DE8D /* MontserratAlternates-ExtraBoldItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08983D4A218998AC00C1DE8D /* MontserratAlternates-ExtraBoldItalic.otf */; };
 		08983DB1218998AC00C1DE8D /* MontserratAlternates-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08983D4B218998AC00C1DE8D /* MontserratAlternates-Italic.otf */; };
 		08983DB2218998AC00C1DE8D /* Montserrat-SemiBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = 08983D4C218998AC00C1DE8D /* Montserrat-SemiBold.otf */; };
-		08983DB3218998AC00C1DE8D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08983D4D218998AC00C1DE8D /* Assets.xcassets */; };
 		08F0042621885F1E007E9958 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0042521885F1E007E9958 /* AppDelegate.swift */; };
 		08F0042821885F1E007E9958 /* UploadVideoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0042721885F1E007E9958 /* UploadVideoVC.swift */; };
 		08F0042A21885F1E007E9958 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0042921885F1E007E9958 /* SecondViewController.swift */; };
@@ -217,7 +216,6 @@
 		08983D4A218998AC00C1DE8D /* MontserratAlternates-ExtraBoldItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-ExtraBoldItalic.otf"; sourceTree = "<group>"; };
 		08983D4B218998AC00C1DE8D /* MontserratAlternates-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "MontserratAlternates-Italic.otf"; sourceTree = "<group>"; };
 		08983D4C218998AC00C1DE8D /* Montserrat-SemiBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold.otf"; sourceTree = "<group>"; };
-		08983D4D218998AC00C1DE8D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		08F0042221885F1E007E9958 /* AIVimo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AIVimo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		08F0042521885F1E007E9958 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		08F0042721885F1E007E9958 /* UploadVideoVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadVideoVC.swift; sourceTree = "<group>"; };
@@ -620,7 +618,6 @@
 			isa = PBXGroup;
 			children = (
 				08983D26218998AC00C1DE8D /* Font Family */,
-				08983D4D218998AC00C1DE8D /* Assets.xcassets */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -890,7 +887,6 @@
 				08983DA4218998AC00C1DE8D /* Montserrat-Italic.otf in Resources */,
 				08983D90218998AC00C1DE8D /* Montserrat-BlackItalic.otf in Resources */,
 				08983D91218998AC00C1DE8D /* MontserratAlternates-Black.otf in Resources */,
-				08983DB3218998AC00C1DE8D /* Assets.xcassets in Resources */,
 				08983D8E218998AC00C1DE8D /* Montserrat-MediumItalic.otf in Resources */,
 				08983DAB218998AC00C1DE8D /* MontserratAlternates-Light.otf in Resources */,
 				08983DA3218998AC00C1DE8D /* Montserrat-ExtraBoldItalic.otf in Resources */,
