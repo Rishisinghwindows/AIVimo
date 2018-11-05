@@ -28,8 +28,12 @@
 	<array>
 		<string>armv7</string>
 	</array>
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>NSSpeechRecognitionUsageDescription</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Needs to use your camera</string>
+	<key>NSSpeechRecognitionUsageDescription</key>
+	<string>NSSpeechRecognitionUsageDescription</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Needs to use Microphone to recrod video</string>
 	<key>UIStatusBarTintParameters</key>
 	<dict>
 		<key>UINavigationBar</key>
