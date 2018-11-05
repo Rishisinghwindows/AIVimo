@@ -10,12 +10,26 @@ import UIKit
 import MobileCoreServices
 import Speech
 import AVFoundation
+import AVKit
 
 class UploadVideoVC: UIViewController,UIDocumentPickerDelegate {
 
+    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var speechLabel: UILabel!
+    @IBOutlet weak var videoView: UIView!
+    var words:[String] = []
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.minimumInteritemSpacing = 10
+        layout.minimumLineSpacing = 10
+        SFSpeechRecognizer.requestAuthorization { status in
+            assert(status == .authorized)
+            DispatchQueue.main.async {
+                // let url = Bundle.main.url(forResource: "WeAreGoingOnBullrun", withExtension: "mp4")!
+            }
+        }
+      
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,14 +37,25 @@ class UploadVideoVC: UIViewController,UIDocumentPickerDelegate {
         // Dispose of any resources that can be recreated.
     }
 
+    func playVideo(url:URL) {
+       
+        let player = AVPlayer(url: url)
+        let playerViewController = AVPlayerViewController()
+        playerViewController.player = player
+        playerViewController.player!.play()
+        playerViewController.view.frame = (self.videoView?.bounds)!
+        videoView.addSubview(playerViewController.view)
+    }
     @IBAction func uploadbuttonTapped(_ sender: Any) {
         chooseVideoFrom()
     }
     
     fileprivate func transcribeFile(url: URL) {
         
+        playVideo(url: url)
         // 1
-        guard let recognizer = SFSpeechRecognizer() else {
+        guard let recognizer = SFSpeechRecognizer(locale: Locale.init(identifier: "Hindi"))
+ else {
             print("Speech recognition not available for specified locale")
             return
         }
@@ -54,10 +79,14 @@ class UploadVideoVC: UIViewController,UIDocumentPickerDelegate {
             }
             
             print("result word by word:", result.bestTranscription.formattedString)
+             //self.speechLabel.text = result.bestTranscription.formattedString
+            self.words = result.bestTranscription.formattedString.components(separatedBy: " ")
+           self.collectionView.reloadData()
             
             // 4
             if result.isFinal {
                 print("result.bestTranscription.formattedString", result.bestTranscription.formattedString)
+                self.speechLabel.text = result.bestTranscription.formattedString
                 
             }
         }
@@ -174,4 +203,36 @@ extension UploadVideoVC {
         dismiss(animated: true, completion: nil)
     }
 }
+
+extension UploadVideoVC:UICollectionViewDataSource,UICollectionViewDelegate,UICollectionViewDelegateFlowLayout {
+    
+    // MARK: UICollectionViewDataSource
+    func numberOfSections(in _: UICollectionView) -> Int {
+        return 1
+    }
+    
+    func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
+        return (words.count)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell: WordCell = collectionView.dequeueReusableCell(withReuseIdentifier: "WordCell", for: indexPath) as! WordCell
+        cell.setupData(word: words[indexPath.row])
+        return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//        let imageViewVC = UIStoryboard.navigateToDocImageVC()
+//        imageViewVC.imageUrl = docs![indexPath.row].imageUrl
+//        imageViewVC.docName = docs![indexPath.row].documentName
+//        UIApplication.topViewController()?.present(imageViewVC, animated: true, completion: nil)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize
+    {
+        let width = words[indexPath.row].widthWithConstrainedHeight(50, font: UIFont.boldSystemFont(ofSize: 15))
+        return CGSize(width: (width + 30), height: 30)
+    }
+}
+
+
 
